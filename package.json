@@ -1,0 +1,46 @@
+{
+  "name": "next-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "now-build": "next build && next export -o dist",
+    "firebase-dev": "npm run dev:client & npm run dev:server",
+    "firebase-dev:client": "next src/client",
+    "firebase-dev:server": "babel src/server --out-dir dist/server --source-maps --watch",
+    "firebase-build:client": "next build src/client",
+    "firebase-build:server": "babel src/server --out-dir dist/server --source-maps",
+    "firebase-build": "npm run build:client && npm run build:server",
+    "firebase-preserve": "npm run build",
+    "firebase-serve": "cross-env NODE_ENV=production firebase serve --only functions,hosting",
+    "firebase-predeploy": "rimraf dist/ && npm run build",
+    "firebase-deploy": "cross-env NODE_ENV=production firebase deploy --only functions,hosting"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "lodash": "^4.17.21",
+    "moralis": "^0.0.25",
+    "next": "9.4",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.5.7",
+    "prop-types": "^15.7.2",
+    "react": "16.13.1",
+    "react-accessible-accordion": "^3.0.1",
+    "react-component-countdown-timer": "^0.1.8",
+    "react-countup": "^4.3.3",
+    "react-dom": "16.13.1",
+    "react-icons": "^3.10.0",
+    "react-particles-js": "^3.2.1",
+    "react-scroll": "^1.7.16",
+    "react-slick": "^0.26.1",
+    "react-tabs": "^3.1.0",
+    "react-visibility-sensor": "^5.1.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.1.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-styled-components": "^1.10.7"
+  }
+}
