@@ -16,7 +16,7 @@ import Video from './Video';
 const Demo = () => {
 
     const redir = () => {
-        window.open('https://github.com/gianksp', '_blank');
+        window.open('https://github.com/gianksp/hyperfabric-app', '_blank');
     }
     return (
         <DemoSectionWrapper>

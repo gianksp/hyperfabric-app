@@ -4,16 +4,6 @@ import { ThemeProvider } from "styled-components";
 
 import Navigation from "sections/Navigation";
 import BannerThree from 'sections/BannerThree'
-import Service from "sections/Service";
-import CoinFund from "sections/CoinFund";
-import About from "sections/About";
-import Awards from "sections/Awards";
-import UserMap from "sections/UserMap";
-import Wallet from "sections/Wallet";
-import Statistics from "sections/Statistics";
-import Stack from "sections/Stack"; 
-import Faq from "sections/Faq";
-import Footer from "sections/Footer";
 import Demo from "sections/Demo";
 
 import FavIcon from "assets/images/fav-icon.png";
