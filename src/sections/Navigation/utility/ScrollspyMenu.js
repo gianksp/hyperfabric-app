@@ -7,6 +7,11 @@ const ScrollspyMenu = ({ menuItems, ...props }) => {
   if (props.className) {
     addAllClasses.push(props.className);
   }
+
+  const redir = () => {
+    window.open('https://github.com/gianksp/hyperfabric-app', '_blank');
+  }
+
   return (
     <ul className={addAllClasses.join(" ")}>
       {menuItems.map((menu, index) => (
@@ -40,7 +45,7 @@ const ScrollspyMenu = ({ menuItems, ...props }) => {
         </li>
       ))}
       <li>
-        <button className="nav__button" on onClick={event =>  window.location.href='https://github.com/users/gianksp/projects/2'}>
+        <button className="nav__button" on onClick={redir}>
           Git Source
         </button>
       </li>
