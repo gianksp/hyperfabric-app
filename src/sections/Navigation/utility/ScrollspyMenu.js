@@ -40,8 +40,7 @@ const ScrollspyMenu = ({ menuItems, ...props }) => {
         </li>
       ))}
       <li>
-        <a href="/signup" className="nav__button">Sign up</a>
-        <button className="nav__button" on>
+        <button className="nav__button" on onClick={event =>  window.location.href='https://github.com/users/gianksp/projects/2'}>
           Git Source
         </button>
       </li>

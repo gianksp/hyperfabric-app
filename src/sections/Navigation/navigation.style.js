@@ -15,6 +15,10 @@ const NavigationWrap =  styled.header`
     align-items: center;
     border-bottom: 1px solid #6A598E;
   }
+  .logoname {
+    position: absolute;
+    left: 110px;
+  }
   .mobile-menu-icon {
     display: none;
     color: #1D316C;

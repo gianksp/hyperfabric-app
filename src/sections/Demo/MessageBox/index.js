@@ -5,7 +5,8 @@ import MessageBoxWrapper from "./messageBox.style";
 import Link from "next/link";
 import { useEffect } from "react";
 import isEmpty from 'lodash/isEmpty';
-
+import get from 'lodash/get';
+import axios from 'axios'
 const MessageBox = ({
     historicalFunction,
     broadcastFunctions = [],
@@ -23,12 +24,6 @@ const MessageBox = ({
     const [sent, setSent] = useState([])
 
     const onMessageChange = (evt) => {
-        // if (isMessageEmpty())
-        //     setEmptyAlert()
-        // else {
-        //     setAlert()
-        // }
-
         setMessage(evt.target.value)
     }
 
@@ -45,9 +40,9 @@ const MessageBox = ({
 
     useEffect(() => {
         loadHistory();
-        // setInterval(() => {
-        //     loadHistory();
-        // }, 4000);
+        setInterval(() => {
+            loadHistory();
+        }, 4000);
     }, [])
 
     const isMessageEmpty = () => {
@@ -68,10 +63,19 @@ const MessageBox = ({
 
         broadcastFunctions.forEach((fn) => {
             const finalMessage = `${signature} ${msg.trim()}`
-            const target = `${process.env.NEXT_PUBLIC_MORALIS}&func=${fn}&message=${finalMessage}`
-            fetch(target).then(response => response.json()).then((data) => {
+            const target = `${process.env.NEXT_PUBLIC_MORALIS_REST}/${fn}?message=${finalMessage}`
+            axios.post(target, {
+                "_ApplicationId": process.env.NEXT_PUBLIC_MORALIS_APP_ID
+            })
+            .then(result => {
+                const data = result.data
                 if (!isEmpty(data.result)) { 
                     let tx = data.result
+                    
+                    if (!isEmpty(tx.text) && isEmpty(tx.transactionHash)) {
+                        //Artificially populate tx hash (from elrond)
+                        tx.transactionHash = tx.text.split(":")[tx.text.split(":").length-1].trim()
+                    }
                     tx.destination = fn
                     let newList = sent
                     newList.push(tx)
@@ -82,21 +86,23 @@ const MessageBox = ({
                     console.log(target)
                     console.log(data)
                 }
-            });
+            })
         })
     }
 
     const loadHistory = () => {
-        const target = `${process.env.NEXT_PUBLIC_MORALIS}&func=${historicalFunction}`
-        console.log(target)
-        fetch(target).then(response => response.json()).then(data => {
-            if (!isEmpty(data.result))
+        axios.post(`${process.env.NEXT_PUBLIC_MORALIS_REST}/${historicalFunction}`, {
+            "_ApplicationId": process.env.NEXT_PUBLIC_MORALIS_APP_ID
+        })
+        .then(result => {
+            const data = result.data
+            if (!isEmpty(data))
                 setHistory(data.result)
             else {
                 console.log(target)
                 console.log(data)
             }
-        });
+        })
     }
 
     const displayHistoryItems = () => {
@@ -113,7 +119,11 @@ const MessageBox = ({
 
     const displayHistory = (
         <div className="imessage">
-            <h3 className="min">Messages in this contract</h3>
+            <Row>
+                <h3 className="min">Messages in this contract</h3>
+
+                <a className="hyperlink" href={`${process.env.NEXT_PUBLIC_MORALIS}&func=${historicalFunction}`} target="_blank">Hyperlink</a>
+            </Row>
             {displayHistoryItems()}
         </div>
     )
@@ -130,6 +140,8 @@ const MessageBox = ({
                 return `https://rinkeby.etherscan.io/tx/${txHash}`
             case 'broadcastToBinance':
                 return `https://testnet.bscscan.com/tx/${txHash}`
+            case 'broadcastToElrond':
+                return `https://testnet-explorer.elrond.com/transactions/${txHash}`
         }
     }
 

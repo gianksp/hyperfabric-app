@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "axios": "^0.21.1",
     "lodash": "^4.17.21",
     "moralis": "^0.0.25",
     "next": "9.4",

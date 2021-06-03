@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MessageBoxWrapper = styled.div`
+const CounterBoxWrapper = styled.div`
 
 .min {
     padding: 0px;
@@ -9,8 +9,22 @@ const MessageBoxWrapper = styled.div`
     font-weight: lighter;
 }
 
+.counter {
+  position: absolute;
+    top: -10px;
+    right: -250px;
+    font-size: 4em;
+}
+
+.c-title {
+  position: absolute;
+    top: -10px;
+    width: 300px;
+    right: -470px;
+}
+
 .hyperlink {
-  margin-top: 11px;
+  margin-top: 0px;
   margin-left: 15px;
   color: goldenrod;
 }
@@ -238,4 +252,4 @@ textarea {
   }
 `;
 
-export default MessageBoxWrapper;
+export default CounterBoxWrapper;

@@ -1,9 +1,9 @@
-pragma solidity ^0.6.0;
+pragma solidity ^0.6.0; // KOVAN CHAINLINK TEST
 
 import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
 
 
-contract HyperFabricChainlink is ChainlinkClient {
+contract Hyperfabric is ChainlinkClient {
   
     uint256 public volume;
     

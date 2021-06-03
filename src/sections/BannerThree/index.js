@@ -19,10 +19,11 @@ import particleBottomLeft from "assets/images/particles/banner/particle-bottom-l
 import particleBottomRight from "assets/images/particles/banner/particle-bottom-right.png";
 
 import BannerWrapper from "./banner.style";
+import { times } from "lodash";
 
 const BannerThree = () => {
   return (
-    <BannerWrapper>
+    <BannerWrapper className="paco">
       <Box className="banner-three-wrap">
         <img
           src={particleTopLeft}
@@ -66,9 +67,16 @@ const BannerThree = () => {
                   <br />
                   in different fabrics and networks. Powered by Moralis, this cross chain
                   <br />
-                  gateway supports any type of interaction.
+                  gateway supports any type of interaction by exposing a REST gateway 
+                  <br />
+                  interface to any smart contract method in any technology.
                   <br />
                 </Text>
+                <Box className="about-list">
+                <Text as="span">Communicate smart contracts across different network fabrics</Text>
+                <Text as="span">Interact with smart contracts through REST</Text>
+                <Text as="span">May seem like black magic but is actually Moralis</Text>
+            </Box>
               </Box>
               <Box className="banner-content">
             </Box>

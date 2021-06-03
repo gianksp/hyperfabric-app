@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
-
 pragma solidity 0.8.0;
 
 
-contract MoralisMessager {
+contract HyperFabric {
     
     string[] internal messages;
     
@@ -17,7 +16,10 @@ contract MoralisMessager {
         return messages;
     }
     
-    function resetMessages() public {
-        delete messages;
+    function getLastMessage() public view returns(string memory lastMessage) {
+        if (messages.length > 0)
+            return messages[messages.length - 1];
+        
+        return '';
     }
 }

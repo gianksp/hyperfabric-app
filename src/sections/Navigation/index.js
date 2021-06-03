@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
 import { Container } from "reusecore/Layout";
-import logo from "assets/images/logo-white.png";
+import logo from "assets/images/hyperfabric-blue.svg";
 
 import Data from "./utility/data.js";
 import ScrollspyMenu from "./utility/ScrollspyMenu";
@@ -41,6 +41,9 @@ const Navigation = () => {
               <img src={logo} alt="prime app landing" />
             </a>
           </Link>
+          <div className="logoname">
+            <h1>Hyperfabric Link</h1>
+          </div>
           <nav className="nav">
             <FaBars
               className="mobile-menu-icon"

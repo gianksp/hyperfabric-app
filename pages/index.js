@@ -28,6 +28,7 @@ const Home = () => {
           <meta name="Description" content="Hyperfabric | Cross chain interoperability" />
           <meta name="theme-color" content="#280D57" />
           <link rel="shortcut icon" type="image/x-icon" href={FavIcon} />
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
         </Head>
 
         <GlobalStyle />

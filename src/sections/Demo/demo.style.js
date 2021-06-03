@@ -11,9 +11,9 @@ const DemoSectionWrapper = styled.div`
  }
 
  .me {
-     height: 400px;
      width:100%;
      text-align:center;
+     margin-top: 100px;
  }
 `;
 
