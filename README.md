@@ -1,5 +1,5 @@
 ![Hyperfabric](https://i.ibb.co/CQz0dtw/Hyperfabricwsponsor.jpg)
-## _A Moralis Hackathon project 20201_
+## _A Moralis Hackathon project 2021_
 
 ## What is it?
 Hyperfabric makes possible the communication across smart contracts in different fabrics and networks. Powered by Moralis, this cross chain gateway supports any type of interaction by exposing a REST gateway interface to any smart contract method in any technology.
