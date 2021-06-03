@@ -1,8 +1,12 @@
-![Hyperfabric](https://i.ibb.co/CQz0dtw/Hyperfabricwsponsor.jpg)
+[![Hyperfabric](https://i.ibb.co/CQz0dtw/Hyperfabricwsponsor.jpg)](https://www.youtube.com/watch?v=7NCn_GQqpAU)
 ## _A Moralis Hackathon project 2021_
 
 ## What is it?
-Hyperfabric makes possible the communication across smart contracts in different fabrics and networks. Powered by Moralis, this cross chain gateway supports any type of interaction by exposing a REST gateway interface to any smart contract method in any technology.
+[http://hyperfabric.link](http://hyperfabric.link) makes possible the communication across smart contracts in different fabrics and networks. Powered by Moralis, this cross chain gateway supports any type of interaction by exposing a REST gateway interface to any smart contract method in any technology.
+
+## How it works?
+
+![Video on how it works](https://www.youtube.com/watch?v=7NCn_GQqpAU)
 
 ## Features
 
@@ -21,6 +25,7 @@ Hyperfabric uses a number of technologies and networks:
 - [Binance Smart Chain](https://www.binance.org/en/smartChain) - This dual-chain architecture will empower its users to build their decentralized apps and digital assets on one blockchain and take advantage of the fast trading to exchange on the other.
 - [Elrond](https://elrond.com/) A highly scalable, fast and secure blockchain platform for distributed apps, enterprise use cases and the new internet economy.
 - [Chainlink](https://chain.link/) - Chainlink's decentralized oracle network provides reliable, tamper-proof inputs and outputs for complex smart contracts on any blockchain.
+- [Moralis Alchemist](https://github.com/gianksp/moralis-alchemist) - A middleware developed for this hackathon to translate GET -> POST requests
 
 ## Smart Contracts
 - EVM contracts can be found in the root of the code in `/contracts`
