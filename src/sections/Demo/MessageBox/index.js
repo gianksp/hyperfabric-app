@@ -122,7 +122,7 @@ const MessageBox = ({
             <Row>
                 <h3 className="min">Messages in this contract</h3>
 
-                <a className="hyperlink" href={`${process.env.NEXT_PUBLIC_MORALIS}&func=${historicalFunction}`} target="_blank">Hyperlink</a>
+                <a className="hyperlink" href={`${process.env.NEXT_PUBLIC_MORALIS_REST}/${historicalFunction}?_ApplicationId=${process.env.NEXT_PUBLIC_MORALIS_APP_ID}`} target="_blank">Hyperlink</a>
             </Row>
             {displayHistoryItems()}
         </div>

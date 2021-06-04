@@ -45,7 +45,7 @@ const CounterBox = ({
                         </Row>
                         <Row className="clink">
                             <a href={contract} target="_blank">View contract</a>
-                            <a className="hyperlink" href={`${process.env.NEXT_PUBLIC_HYPERFABRIC_LINK}&func=get`} target="_blank">Hyperlink</a>
+                            <a className="hyperlink" href={`${process.env.NEXT_PUBLIC_MORALIS_REST}/${historicalFunction}?_ApplicationId=${process.env.NEXT_PUBLIC_MORALIS_APP_ID}`} target="_blank">Hyperlink</a>
                         </Row>
                     </Col>
                     <Col>
