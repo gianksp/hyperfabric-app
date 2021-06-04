@@ -25,7 +25,6 @@ const CounterBoxWrapper = styled.div`
 
 .hyperlink {
   margin-top: 0px;
-  margin-left: 15px;
   color: goldenrod;
 }
 
@@ -67,6 +66,7 @@ textarea {
     position: absolute;
     top: 42px;
     margin-bottom: 10px;
+    width: 350px;
  }
 
  .imessage {
@@ -189,7 +189,10 @@ textarea {
   
   
   
-  
+  .sco {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
   
   
   

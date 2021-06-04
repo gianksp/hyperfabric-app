@@ -15,6 +15,12 @@ const DemoSectionWrapper = styled.div`
      text-align:center;
      margin-top: 100px;
  }
+
+ .title-log {
+    background: darkorchid;
+    padding: 10px;
+    border-radius: 20px;
+ }
 `;
 
 export default DemoSectionWrapper;

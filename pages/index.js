@@ -10,8 +10,19 @@ import FavIcon from "assets/images/fav-icon.png";
 import theme from "assets/theme/theme";
 import GlobalStyle from "assets/theme";
 
+import { MoralisProvider } from 'react-moralis';
+
+import { useEffect } from "react";
+import { isEmpty } from "lodash";
+
+const appId = process.env.NEXT_PUBLIC_MORALIS_APP_ID
+const serverUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_PATH
+console.log(appId)
+console.log(serverUrl)
+
 const Home = () => {
   return (
+    <MoralisProvider appId={appId} serverUrl={serverUrl}>
       <ThemeProvider theme={theme}>
         <Head>
           <title>Hyperfabric | Cross chain interoperability</title>
@@ -26,6 +37,7 @@ const Home = () => {
         <BannerThree />
         <Demo />
       </ThemeProvider>
+    </MoralisProvider>
   );
 };
 

@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 const MessageBoxWrapper = styled.div`
 
+.sco {
+  margin-left: 8px;
+  margin-right: 8px;
+}
 .min {
     padding: 0px;
     margin: 10px 0px;

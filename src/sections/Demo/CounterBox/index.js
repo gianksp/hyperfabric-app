@@ -11,6 +11,7 @@ const CounterBox = ({
     contract,
     logo,
     title,
+    sourceCode,
 }) => {
 
     const [count, setCount] = useState(0)
@@ -45,6 +46,9 @@ const CounterBox = ({
                         </Row>
                         <Row className="clink">
                             <a href={contract} target="_blank">View contract</a>
+                            <span className="sco">|</span>
+                            <a href={sourceCode} target="_blank">Source code</a>
+                            <span className="sco">|</span>
                             <a className="hyperlink" href={`${process.env.NEXT_PUBLIC_MORALIS_REST}/${historicalFunction}?_ApplicationId=${process.env.NEXT_PUBLIC_MORALIS_APP_ID}`} target="_blank">Hyperlink</a>
                         </Row>
                     </Col>

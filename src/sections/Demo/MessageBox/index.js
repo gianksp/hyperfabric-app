@@ -15,6 +15,7 @@ const MessageBox = ({
     logo,
     title,
     signature,
+    sourceCode,
 }) => {
 
     const [message, setMessage] = useState()
@@ -42,7 +43,7 @@ const MessageBox = ({
         loadHistory();
         setInterval(() => {
             loadHistory();
-        }, 4000);
+        }, 3000);
     }, [])
 
     const isMessageEmpty = () => {
@@ -109,7 +110,7 @@ const MessageBox = ({
         let items = []
         history.forEach((entry) => {
             items.push((
-                <p className="from-them">
+                <p className="from-them" key={entry}>
                     {entry}
                 </p>
             ))
@@ -138,6 +139,8 @@ const MessageBox = ({
                 return `https://ropsten.etherscan.io/tx/${txHash}`
             case 'broadcastToRinkeby':
                 return `https://rinkeby.etherscan.io/tx/${txHash}`
+            case 'broadcastToGoerli':
+                return `https://goerli.etherscan.io/tx/${txHash}`
             case 'broadcastToBinance':
                 return `https://testnet.bscscan.com/tx/${txHash}`
             case 'broadcastToElrond':
@@ -194,6 +197,8 @@ const MessageBox = ({
                         </Row>
                         <Row className="clink">
                             <a href={contract} target="_blank">View contract</a>
+                            <span className="sco">|</span>
+                            <a href={sourceCode} target="_blank" >Source code</a>
                         </Row>
                     </Col>
                 </Row>
