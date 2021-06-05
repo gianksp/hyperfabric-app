@@ -8,7 +8,11 @@ const VideoWrapper = styled.div`
     position: relative;
     height: 0;
   }
-  
+  .title-log {
+    background: darkorchid;
+    padding: 10px;
+    border-radius: 20px;
+  }
   .video-responsive iframe {
     left: 0;
     top: 0;
@@ -30,6 +34,15 @@ const VideoWrapper = styled.div`
     font-family: inherit;
     height: 44px;
  }
+ .complete {
+  background: #0097a7;
+    color: white;
+}
+
+.pending {
+  background: beige;
+  color: #666;
+}
 `;
 
 export default VideoWrapper;

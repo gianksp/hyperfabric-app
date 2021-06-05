@@ -73,13 +73,11 @@ const BannerThree = () => {
                   <br />
                 </Text>
                 <Box className="about-list">
-                <Text as="span">Communicate smart contracts across network fabrics</Text>
-                <Text as="span">REST access from anywhere any smart contract</Text>
-                <Text as="span">Real time event driven updates across any network technology</Text>
-            </Box>
+                  <Text as="span">Communicate smart contracts across network fabrics</Text>
+                  <Text as="span">REST access from anywhere any smart contract</Text>
+                  <Text as="span">Real time event driven updates across any network technology</Text>
+                </Box>
               </Box>
-              <Box className="banner-content">
-            </Box>
               <img
                 className="banner__thumb banner__thumbsmall"
                 alt="cryptik banner thumb"

@@ -55,7 +55,7 @@ const Finder = () => {
         return logs.map((entry) => {
             count += 1
             return (
-                <Row key={count}>
+                <Row key={count} className={entry.status}>
                     <Col className="md-1">
                         {`${entry.id.substring(0, 8)}...`}
                     </Col>

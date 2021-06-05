@@ -37,7 +37,7 @@ margin-right: 25px;
     top:0;
     left:0;
     z-index: 2000;
-    height:550px;
+    height:450px;
     width:400px;
     background-color: darkslateblue !important;
     border-radius:10px;
@@ -48,6 +48,7 @@ margin-right: 25px;
     -webkit-background-clip: padding-box;
     -moz-background-clip: padding-box;
     background-clip: padding-box;
+    padding:40px !important;
 }
 
 .light {
@@ -70,8 +71,8 @@ margin-right: 25px;
     transition-duration: 0.4s;
     text-align: center;
     margin: 0 auto;
-    height:80px;
     padding: 0px;
+    width: 150px;
   }
   
   .button1 {

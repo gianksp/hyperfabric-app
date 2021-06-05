@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { SectionTitle, SectionBackground } from "reusecore/SectionTitle";
 import { Container, Row, Col } from "reusecore/Layout";
 import Box from "reusecore/Box";
+import Text from "reusecore/Text";
 import Heading from "reusecore/Heading";
 import DemoSectionWrapper from "./demo.style";
 import MessageBox from "./MessageBox";
@@ -11,6 +12,8 @@ import ethereumIcon from 'assets/images/ethereum.svg';
 import polygonIcon from 'assets/images/polygon.svg';
 import binanceIcon from 'assets/images/binance.svg';
 import elrondIcon from 'assets/images/elrond.svg';
+import teamImage from 'assets/images/team.jpeg';
+import linkedinImage from 'assets/images/linkedin.svg';
 import Video from './Video';
 import Logs from './Logs';
 import Finder from './Finder';
@@ -53,7 +56,6 @@ const Demo = () => {
                                             'broadcastToMumbai',
                                             'broadcastToBinance',
                                             'broadcastToElrond',
-                                            'broadcastToRinkeby'
                                         ]}
                                         signature='[From Ropsten]'
                                         placeHolder='Your message to others...'
@@ -77,7 +79,6 @@ const Demo = () => {
                                             'broadcastToRopsten',
                                             'broadcastToBinance',
                                             'broadcastToElrond',
-                                            'broadcastToRinkeby'
                                         ]}
                                     />
                                 </Col>
@@ -95,32 +96,10 @@ const Demo = () => {
                                         'broadcastToRopsten',
                                         'broadcastToMumbai',
                                         'broadcastToElrond',
-                                        'broadcastToRinkeby',
                                     ]}
                                 />
                             </Col>
                             </Row>
-                            <Row>
-                                <Col className="md-4 mbox">
-                                    <MessageBox 
-                                        key="rinkeby"
-                                        historicalFunction='readFromRinkeby'
-                                        broadcastFunctions={[
-                                            'broadcastToMumbai',
-                                            'broadcastToBinance',
-                                            'broadcastToElrond',
-                                            'broadcastToRopsten'
-                                        ]}
-                                        signature='[From Rinkeby]'
-                                        placeHolder='Your message to others...'
-                                        sourceCode={process.env.NEXT_PUBLIC_SOURCE_CONTRACT}
-                                        contract={process.env.NEXT_PUBLIC_RINKEBY}
-                                        logo={ethereumIcon}
-                                        title='Ethereum (Rinkeby)'
-                                    />
-                                </Col>
-                            
-                        </Row>
                         </SectionTitle>
                     </Box>
                     </Col>
@@ -169,12 +148,22 @@ const Demo = () => {
                     <SectionBackground>
                         <Row>
                             <Col className="md-2">
-                                <Heading as="h1">About</Heading>
+                                <Heading as="h1">Team</Heading>
                             </Col>
                         </Row>
                     </SectionBackground>
                     <Row onClick={redir}>
-                        <h1>Built by Giancarlo for the Moralis Hackathon</h1>
+                        <Col>
+                            <img src={teamImage} className="team" height={320}/>
+                        </Col>
+                        <Col className="lefty">
+                            <h1>Built with love by</h1>
+                            <Box className="about-list">
+                                <Text as="span"><a href="https://www.linkedin.com/in/giancarlo-sanchez-62b13849/">Giancarlo Sanchez <img src={linkedinImage} height={24}/></a></Text>
+                                <Text as="span"><a href="https://www.linkedin.com/in/karen-layrisse-86526955/">Karen Layrisse <img src={linkedinImage} height={24}/></a></Text>
+                                <Text as="span">Teebu</Text>
+                            </Box>
+                        </Col>
                     </Row>
                 </Container>
             </Box>

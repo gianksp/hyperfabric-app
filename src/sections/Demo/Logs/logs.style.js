@@ -9,6 +9,15 @@ const VideoWrapper = styled.div`
   border-radius: 20px;
 }
 
+.complete {
+  background: #0097a7;
+    color: white;
+}
+
+.pending {
+  background: beige;
+  color: #666;
+}
 `;
 
 export default VideoWrapper;

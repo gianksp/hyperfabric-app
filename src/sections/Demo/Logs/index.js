@@ -74,7 +74,7 @@ const Logs = ({operationType, title}) => {
         return logs.map((entry) => {
             count += 1
             return (
-                <Row key={count}>
+                <Row key={count} className={entry.status}>
                     <Col className="md-1">
                         {`${entry.id.substring(0, 8)}...`}
                     </Col>
@@ -88,7 +88,7 @@ const Logs = ({operationType, title}) => {
                         {`${entry.contract.substring(0, 8)}...`}
                     </Col>
                     <Col className="md-1">
-                        {entry.status}
+                        <strong>{entry.status}</strong>
                     </Col>
                     <Col className="md-4">
                         {entry.arguments || 'N/A'}

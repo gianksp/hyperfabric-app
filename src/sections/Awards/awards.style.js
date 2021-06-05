@@ -21,6 +21,7 @@ margin-bottom: -250px !important;
   }
 
   .awards-item-wrapper {
+    z-index:1000;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: space-between;

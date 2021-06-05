@@ -10,20 +10,20 @@ import Modal, {closeStyle} from 'simple-react-modal'
  
 
 const LoginBtn = () => {
-  const {isAuthenticated, authenticate, Moralis, user, logout} = useMoralis()
+  const {isAuthenticated, Moralis, user, logout, authenticate} = useMoralis()
   const [profileUrl, setProfileUrl] = useState('https://i.ibb.co/L03wxBz/moralis-tech.png')
   const [modalIsOpen,setIsOpen] = useState(false)
   const [email, setEmail] = useState()
   const [username, setUsername] = useState()
-  
-
+  console.log(user)
+  console.log(isAuthenticated)
   useEffect(() => {
     if (!isAuthenticated)
       return
 
     setEmail(user.get('email'))
     setUsername(user.get('username'))
-  }, [isAuthenticated, profileUrl])
+  }, [isAuthenticated, profileUrl, user])
 
 
   useEffect(() => {
@@ -119,22 +119,26 @@ const LoginBtn = () => {
             accept="image/png, image/jpeg"
             onChange={onModalProfileImageChange}></input>
         </Row>
-        <Row className="nopad">
-          <button className="button button2" on="true" onClick={closeModal}>
-            <Row>
-                <Col className="cen">
-                  <span className="sign">Cancel</span>
-                </Col>
-            </Row>
-          </button>
-
-          <button className="button button2" on="true" onClick={saveModal}>
-            <Row>
-                <Col className="cen">
-                  <span className="sign">Save</span>
-                </Col>
-            </Row>
-          </button>
+        <Row>
+          <Col className="md-6">
+            <button className="button button2"onClick={closeModal}>
+              <Row>
+                  <Col className="cen">
+                    <span className="sign">Cancel</span>
+                  </Col>
+              </Row>
+            </button>
+          </Col>
+          
+          <Col className="md-6">
+            <button className="button button2" onClick={saveModal}>
+              <Row>
+                  <Col className="cen">
+                    <span className="sign">Save</span>
+                  </Col>
+              </Row>
+            </button>
+          </Col>
       </Row>
       </Modal>
   )

@@ -110,7 +110,7 @@ const Awards = () => {
       <Box className="awards-section">
         <Container>
           <Row>
-            <Col className="xs-12  lg-3 md-6 sm-6">
+            <Col >
               
               <Box className="awards-item-wrapper">
                 <Box
@@ -132,7 +132,7 @@ const Awards = () => {
             </Col>
 
 
-            <Col className="xs-12 lg-3 md-6 sm-6">
+            <Col >
               
             <Box className="awards-item-wrapper">
               <Box
@@ -154,7 +154,7 @@ const Awards = () => {
           </Col>
 
 
-          <Col className="xs-12 lg-3 md-6 sm-6">
+          <Col >
               
           <Box className="awards-item-wrapper">
             <Box

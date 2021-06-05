@@ -51,7 +51,7 @@ const ScrollspyMenu = ({ menuItems, ...props }) => {
         <LoginBtn />
       </li>
       <li>
-        <button className="nav__button" on onClick={redir}>
+        <button className="nav__button" onClick={redir}>
           Git Source
         </button>
       </li>

@@ -22,7 +22,7 @@ const BannerWrapper = styled.div`
 .banner__thumbsmall{
   position: absolute;
   right: -50%;
-  top:-25%;
+  top:-20%;
   width: 55%;
 }
 
