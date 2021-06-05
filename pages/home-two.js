@@ -3,47 +3,41 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 
 import Navigation from "sections/Navigation";
-import BannerTwo from 'sections/BannerTwo';
-import Service from "sections/Service";
-import CoinFund from "sections/CoinFund";
-import About from "sections/About";
+import BannerThree from 'sections/BannerThree'
+import Demo from "sections/Demo";
 import Awards from "sections/Awards";
-import UserMap from "sections/UserMap";
-import Wallet from "sections/Wallet";
-import Statistics from "sections/Statistics";
-import Stack from "sections/Stack"; 
-import Faq from "sections/Faq";
-import Footer from "sections/Footer";
 
 import FavIcon from "assets/images/fav-icon.png";
 import theme from "assets/theme/theme";
 import GlobalStyle from "assets/theme";
 
+import { MoralisProvider } from 'react-moralis';
+
+
+const appId = process.env.NEXT_PUBLIC_MORALIS_APP_ID
+const serverUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_PATH
+
 const Home = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Head>
-      <title>Hyperfabric Link</title>
-        <meta name="Description" content="Blockchain fabric interoperability" />
-        <meta name="theme-color" content="#280D57" />
-        <link rel="shortcut icon" type="image/x-icon" href={FavIcon} />
-      </Head>
+    <MoralisProvider appId={appId} serverUrl={serverUrl}>
+      <ThemeProvider theme={theme}>
+        <Head>
+          <title>Hyperfabric | Cross chain interoperability</title>
+          <meta name="Description" content="Hyperfabric | Cross chain interoperability" />
+          <meta name="theme-color" content="#280D57" />
+          <link rel="shortcut icon" type="image/x-icon" href={FavIcon} />
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
+        </Head>
 
-      <GlobalStyle />
-      <Navigation />
-      <BannerTwo />
-      <Service />
-      <CoinFund />
-      <About />
-      <Awards />
-      <UserMap />
-      <Wallet />
-      <Statistics />
-       <Faq />
-      <Stack />
-      <Footer />
-    </ThemeProvider>
+        <GlobalStyle />
+        <Navigation />
+        <Awards />
+        <BannerThree />
+        <Demo />
+      </ThemeProvider>
+    </MoralisProvider>
   );
 };
 
 export default Home;
+
