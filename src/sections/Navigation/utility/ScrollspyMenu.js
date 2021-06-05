@@ -1,6 +1,9 @@
 import React from "react";
 import { Link as OnepageLink } from "react-scroll";
 import Link from 'next/link';
+import metam from "assets/images/metamask.svg";
+import { Container, Row, Col } from "reusecore/Layout";
+import LoginBtn from './Login'
 
 const ScrollspyMenu = ({ menuItems, ...props }) => {
   const addAllClasses = [""];
@@ -44,6 +47,9 @@ const ScrollspyMenu = ({ menuItems, ...props }) => {
           )}
         </li>
       ))}
+      <li>
+        <LoginBtn />
+      </li>
       <li>
         <button className="nav__button" on onClick={redir}>
           Git Source

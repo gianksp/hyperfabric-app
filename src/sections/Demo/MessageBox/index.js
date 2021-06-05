@@ -43,7 +43,7 @@ const MessageBox = ({
         loadHistory();
         setInterval(() => {
             loadHistory();
-        }, 3000);
+        }, 4000);
     }, [])
 
     const isMessageEmpty = () => {
@@ -108,12 +108,14 @@ const MessageBox = ({
 
     const displayHistoryItems = () => {
         let items = []
+        let counter = 0;
         history.forEach((entry) => {
             items.push((
-                <p className="from-them" key={entry}>
+                <p className="from-them" key={counter}>
                     {entry}
                 </p>
             ))
+            counter += 1 ;
         })
         return items.reverse()
     }

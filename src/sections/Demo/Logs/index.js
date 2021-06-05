@@ -70,9 +70,11 @@ const Logs = ({operationType, title}) => {
     }
 
     const displayLogs = () => {
+        let count = 0
         return logs.map((entry) => {
+            count += 1
             return (
-                <Row>
+                <Row key={count}>
                     <Col className="md-1">
                         {`${entry.id.substring(0, 8)}...`}
                     </Col>

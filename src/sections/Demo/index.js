@@ -53,6 +53,7 @@ const Demo = () => {
                                             'broadcastToMumbai',
                                             'broadcastToBinance',
                                             'broadcastToElrond',
+                                            'broadcastToRinkeby'
                                         ]}
                                         signature='[From Ropsten]'
                                         placeHolder='Your message to others...'
@@ -76,6 +77,7 @@ const Demo = () => {
                                             'broadcastToRopsten',
                                             'broadcastToBinance',
                                             'broadcastToElrond',
+                                            'broadcastToRinkeby'
                                         ]}
                                     />
                                 </Col>
@@ -93,10 +95,32 @@ const Demo = () => {
                                         'broadcastToRopsten',
                                         'broadcastToMumbai',
                                         'broadcastToElrond',
+                                        'broadcastToRinkeby',
                                     ]}
                                 />
                             </Col>
                             </Row>
+                            <Row>
+                                <Col className="md-4 mbox">
+                                    <MessageBox 
+                                        key="rinkeby"
+                                        historicalFunction='readFromRinkeby'
+                                        broadcastFunctions={[
+                                            'broadcastToMumbai',
+                                            'broadcastToBinance',
+                                            'broadcastToElrond',
+                                            'broadcastToRopsten'
+                                        ]}
+                                        signature='[From Rinkeby]'
+                                        placeHolder='Your message to others...'
+                                        sourceCode={process.env.NEXT_PUBLIC_SOURCE_CONTRACT}
+                                        contract={process.env.NEXT_PUBLIC_RINKEBY}
+                                        logo={ethereumIcon}
+                                        title='Ethereum (Rinkeby)'
+                                    />
+                                </Col>
+                            
+                        </Row>
                         </SectionTitle>
                     </Box>
                     </Col>

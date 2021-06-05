@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import Navigation from "sections/Navigation";
 import BannerThree from 'sections/BannerThree'
 import Demo from "sections/Demo";
+import Awards from "sections/Awards";
 
 import FavIcon from "assets/images/fav-icon.png";
 import theme from "assets/theme/theme";
@@ -12,13 +13,9 @@ import GlobalStyle from "assets/theme";
 
 import { MoralisProvider } from 'react-moralis';
 
-import { useEffect } from "react";
-import { isEmpty } from "lodash";
 
 const appId = process.env.NEXT_PUBLIC_MORALIS_APP_ID
 const serverUrl = process.env.NEXT_PUBLIC_MORALIS_SERVER_PATH
-console.log(appId)
-console.log(serverUrl)
 
 const Home = () => {
   return (
@@ -34,6 +31,7 @@ const Home = () => {
 
         <GlobalStyle />
         <Navigation />
+        <Awards />
         <BannerThree />
         <Demo />
       </ThemeProvider>
@@ -42,3 +40,4 @@ const Home = () => {
 };
 
 export default Home;
+

@@ -78,7 +78,6 @@ const NavigationWrap =  styled.header`
     }
     li{
         position: relative;
-        padding: 28px 0px 28px 40px;
         .dropdown{
           li{
             padding: 0;
@@ -142,7 +141,7 @@ const NavigationWrap =  styled.header`
     } 
     .nav{
       li{
-        padding: 14px 0px 14px 40px;
+        padding: 14px 0px 14px 10px;
         a{ 
           &:hover{
             color: ${props => props.theme.menuHoverColor ? props.theme.menuHoverColor : '#1F2AD5'};

@@ -60,7 +60,7 @@ const BannerThree = () => {
             <Col className="lg-8 md-10 xs-12">
               <Box className="banner-content">
                 <Heading as="h1">
-                  Blockchain Fabric <br /> Interoperability
+                  Realtime Blockchain Fabric <br /> Interoperability
                 </Heading>
                 <Text>
                   Hyperfabric makes possible the communication across smart contracts {" "}
@@ -73,9 +73,9 @@ const BannerThree = () => {
                   <br />
                 </Text>
                 <Box className="about-list">
-                <Text as="span">Communicate smart contracts across different network fabrics</Text>
-                <Text as="span">Interact with smart contracts through REST</Text>
-                <Text as="span">May seem like black magic but is actually Moralis</Text>
+                <Text as="span">Communicate smart contracts across network fabrics</Text>
+                <Text as="span">REST access from anywhere any smart contract</Text>
+                <Text as="span">Real time event driven updates across any network technology</Text>
             </Box>
               </Box>
               <Box className="banner-content">

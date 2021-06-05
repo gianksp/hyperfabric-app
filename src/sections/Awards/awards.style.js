@@ -1,7 +1,16 @@
 import styled from "styled-components";
 
 const AwardsSectionWrapper = styled.div`
-  padding: 85px 0;
+
+margin-top: 220px !important;
+/* position: absolute; */
+/* margin: 0 auto; */
+margin-bottom: -250px !important;
+
+.numeral {
+  padding: 0px;
+    margin: 0px;
+}
   .heading {
     padding-right: 103px;
   }
@@ -17,14 +26,15 @@ const AwardsSectionWrapper = styled.div`
     justify-content: space-between;
 
     .awards-item {
+      width: 100%;
       display: flex;
-      width: 49%;
       color: #fff;
       align-items: center;
-      padding: 20px 0 20px 50px;
+      padding: 20px 20px 20px 50px;
       margin-bottom: 10px;
       background: #2b1867;
       border-radius: 5px;
+      min-width: 220px;
       cursor: pointer;
       &.active,
       &:hover {
