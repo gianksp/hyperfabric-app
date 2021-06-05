@@ -27,18 +27,64 @@ const abi = [
 	}
 ];
 
+ const logger = Moralis.Cloud.getLogger();
+
+ Moralis.Cloud.beforeSave("User", (request) => {
+   const newEmail = request.object.get("email");
+   const newUsername = request.object.get("username");
+   if (request.user) {
+     const oldEmail = request.user.get("email");
+     if (newEmail != oldEmail) {
+       // Welcome email
+       Moralis.Cloud.sendEmail({
+         to: newEmail,
+         templateId: "d-276f918c91144df6ab0e7efc23cff814",
+         dynamic_template_data: {
+           username: newUsername
+         }
+       })
+     }
+   }
+ });
+
+const HyperfabricTransaction = Moralis.Object.extend("HyperfabricTransaction");
+const Visit = Moralis.Object.extend("Visit");
+
 Moralis.Cloud.define("hello", async (request) => {
   const message = request.params.message;
   return "echo "+message;
 });
 
 const readFrom = async (network, contract) => {
+ 	// Init
+  	let transaction = new HyperfabricTransaction();
+  	transaction.set("operation", "readFrom");
+  	transaction.set("network", network);
+  	transaction.set("contract", contract);
+  	transaction.set("status", "pending");
+	transaction = await transaction.save();
+  	// Execute
   	const web3 = Moralis.web3ByChain(network);
   	const target = new web3.eth.Contract(abi, contract);
-  	return await target.methods.getMessages().call().catch(() => "");
+  	let response = await target.methods.getMessages().call().catch(() => "");
+  	// Complete
+  	transaction.set("status", "complete");
+	transaction = await transaction.save();
+  	// Append
+  	response.hyperfabricTransaction = transaction;
+  	return response;
 };
 
 const broadcastTo = async (network, contract, message) => {
+   	// Init
+  	let transaction = new HyperfabricTransaction();
+  	transaction.set("operation", "broadcastTo");
+  	transaction.set("network", network);
+  	transaction.set("contract", contract);
+  	transaction.set("status", "pending");
+  	transaction.set("arguments", `message=${message}`);
+	transaction = await transaction.save();
+  	// Execute
   	const config = await Moralis.Config.get({useMasterKey: true});
   	const pKey = config.get("pKey");
   	const originAddress = config.get("originAddress");
@@ -58,7 +104,13 @@ const broadcastTo = async (network, contract, message) => {
         nonce, 
         chainId: network
     }, pKey);
-    return await web3.eth.sendSignedTransaction(signedTx.rawTransaction); 
+    let response = await web3.eth.sendSignedTransaction(signedTx.rawTransaction); 
+  	// Complete
+  	transaction.set("status", "complete");
+	transaction = await transaction.save();
+  	// Append
+  	response.hyperfabricTransaction = transaction;
+  	return response;
 };
 
 // Polygon (Mumbai)
@@ -121,6 +173,50 @@ Moralis.Cloud.define("broadcastToBinance", async (request) => {
 	return broadcastTo(network, contract, request.params.message);
 });
 
+// Ethereum (Rinkeby)
+Moralis.Cloud.define("readFromRinkeby", async (request) => {
+  	const config = await Moralis.Config.get({useMasterKey: true});
+  	const network = config.get("rinkebyNetwork");
+    const contract = config.get("rinkebyContract");
+  	return readFrom(network, contract);
+});
+
+Moralis.Cloud.define("broadcastToRinkeby", async (request) => {
+  	const config = await Moralis.Config.get({useMasterKey: true});
+    const network = config.get("rinkebyNetwork");
+    const contract = config.get("rinkebyContract");
+	return broadcastTo(network, contract, request.params.message);
+});
+
+// Ethereum (Kovan)
+Moralis.Cloud.define("readFromKovan", async (request) => {
+  	const config = await Moralis.Config.get({useMasterKey: true});
+  	const network = config.get("kovanNetwork");
+    const contract = config.get("kovanContract");
+  	return readFrom(network, contract);
+});
+
+Moralis.Cloud.define("broadcastToKovan", async (request) => {
+  	const config = await Moralis.Config.get({useMasterKey: true});
+    const network = config.get("kovanNetwork");
+    const contract = config.get("kovanContract");
+	return broadcastTo(network, contract, request.params.message);
+});
+
+// Ethereum (Goerli)
+Moralis.Cloud.define("readFromGoerli", async (request) => {
+  	const config = await Moralis.Config.get({useMasterKey: true});
+  	const network = config.get("goerliNetwork");
+    const contract = config.get("goerliContract");
+  	return readFrom(network, contract);
+});
+
+Moralis.Cloud.define("broadcastToGoerli", async (request) => {
+  	const config = await Moralis.Config.get({useMasterKey: true});
+    const network = config.get("goerliNetwork");
+    const contract = config.get("goerliContract");
+	return broadcastTo(network, contract, request.params.message);
+});
 // Elrond (Testnet)
 Moralis.Cloud.define("readFromElrond", async (request) => {
   const config = await Moralis.Config.get({useMasterKey: true});
@@ -141,3 +237,10 @@ Moralis.Cloud.define("broadcastToElrond", async (request) => {
   });
   return response;
 });
+
+// Visit
+Moralis.Cloud.define("visit", async (request) => {
+  	let visit = new Visit();
+	return await visit.save();
+});
+

@@ -16,13 +16,10 @@ const Awards = () => {
 
   const {isInitialized, Moralis} = useMoralis()
   const txState = useState(0)
-  const userState = useState(0)
   const visitState = useState(0)
   global.txState = txState
-  global.userState = userState
   global.visitState = visitState
   const [transactions, setTransactions] = global.txState
-  const [users, setUsers] = global.userState
   const [visits, setVisits] = global.visitState
 
   const transactionCollection = "HyperfabricTransaction"
@@ -39,7 +36,6 @@ const Awards = () => {
 
   const addVisit = () => {
     const target = `${process.env.NEXT_PUBLIC_MORALIS_REST}/visit`
-    console.log(target)
     axios.post(target, {
         "_ApplicationId": process.env.NEXT_PUBLIC_MORALIS_APP_ID
     })
@@ -51,7 +47,6 @@ const Awards = () => {
           return
 
       subscribeTx()
-      subscribeUsers()
       subscribeVisits()
   }
 
@@ -66,18 +61,6 @@ const Awards = () => {
     subscription.on("create", () => increaseTransactions());
     subscription.on("update", () => increaseTransactions());
   }
-
-  const subscribeUsers = async () => {
-    const queryCount = new Moralis.Query(userCollection);
-    const count = await queryCount.count();
-    setUsers(count)
-  
-    // handle events on creation and status update
-    const usrs = new Moralis.Query(userCollection);
-    const subscription = await usrs.subscribe();
-    subscription.on("create", () => increaseUsers());
-  }
-
   
   const subscribeVisits = async () => {
     const queryCount = new Moralis.Query(visitsCollection);
@@ -93,16 +76,6 @@ const Awards = () => {
   const increaseTransactions = () => {
       const [get, set] = global.txState
       set(get+1)
-  }
-
-  const increaseUsers = () => {
-    const [get, set] = global.userState
-    set(get+1)
-  }
-
-  const increaseVisits = () => {
-    const [get, set] = global.visitState
-    set(get+1)
   }
 
   return (
@@ -130,29 +103,6 @@ const Awards = () => {
               </Box>
 
             </Col>
-
-
-            <Col >
-              
-            <Box className="awards-item-wrapper">
-              <Box
-                className={`awards-item active`}
-                key={1}
-              >
-                <Text as="span" className="award-icon">
-                  {" "}
-                  <FaUser/>{" "}
-                </Text>
-                <Box className="counter-text">
-                  {" "}
-                  <h1 className="numeral">{`${users}+`}</h1>{" "}
-                  <Text as="span">Users registered</Text>{" "}
-                </Box>
-              </Box>
-            </Box>
-
-          </Col>
-
 
           <Col >
               
