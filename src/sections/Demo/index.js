@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { SectionTitle, SectionBackground } from "reusecore/SectionTitle";
 import { Container, Row, Col } from "reusecore/Layout";
@@ -17,8 +17,19 @@ import linkedinImage from 'assets/images/linkedin.svg';
 import Video from './Video';
 import Logs from './Logs';
 import Finder from './Finder';
+import {useMoralis} from 'react-moralis'
 
 const Demo = () => {
+    const { Moralis, isInitialized } = useMoralis()
+    const [config, setConfig] = useState({})
+    console.log(config)
+    useEffect(async () => {
+        if (!isInitialized)
+            return
+        const moralisConfig = await Moralis.Config.get()    
+        setConfig(moralisConfig.attributes)
+    }, [Moralis, isInitialized])
+    
 
     const redir = () => {
         window.open('https://github.com/gianksp/hyperfabric-app', '_blank');
@@ -39,7 +50,7 @@ const Demo = () => {
                                 <Col className="md-8 mbox">
                                     <CounterBox 
                                         historicalFunction='readFromElrond'
-                                        contract={process.env.NEXT_PUBLIC_ELROND}
+                                        contract={`${process.env.NEXT_PUBLIC_ELROND}${config.elrondContract}`}
                                         sourceCode='https://docs.elrond.com/developers/tutorials/counter/'
                                         logo={elrondIcon}
                                         title='Elrond (Testnet)'
@@ -60,7 +71,7 @@ const Demo = () => {
                                         signature='[From Ropsten]'
                                         placeHolder='Your message to others...'
                                         sourceCode={process.env.NEXT_PUBLIC_SOURCE_CONTRACT}
-                                        contract={process.env.NEXT_PUBLIC_ROPSTEN}
+                                        contract={`${process.env.NEXT_PUBLIC_ROPSTEN}${config.ropstenContract}`}
                                         logo={ethereumIcon}
                                         title='Ethereum (Ropsten)'
                                     />
@@ -72,7 +83,7 @@ const Demo = () => {
                                         placeHolder='Your message to others...'
                                         signature='[From Mumbai]'
                                         sourceCode={process.env.NEXT_PUBLIC_SOURCE_CONTRACT}
-                                        contract={process.env.NEXT_PUBLIC_MUMBAI}
+                                        contract={`${process.env.NEXT_PUBLIC_MUMBAI}${config.mumbaiContract}`}
                                         logo={polygonIcon}
                                         title='Polygon (Mumbai)'
                                         broadcastFunctions={[
@@ -89,7 +100,7 @@ const Demo = () => {
                                     placeHolder='Your message to others...'
                                     signature='[From Binance]'
                                     sourceCode={process.env.NEXT_PUBLIC_SOURCE_CONTRACT}
-                                    contract={process.env.NEXT_PUBLIC_BNB}
+                                    contract={`${process.env.NEXT_PUBLIC_BNB}${config.bnbContract}`}
                                     logo={binanceIcon}
                                     title='Binance (Testnet)'
                                     broadcastFunctions={[
